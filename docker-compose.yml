@@ -21,7 +21,7 @@ services:
   php:
     build:
       context: .
-      dockerfile: ./dockerize/app/php.dockerfile
+      dockerfile: Dockerfile
     container_name: lcp_php
     volumes: 
       - .:/var/www/html
