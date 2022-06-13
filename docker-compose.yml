@@ -30,41 +30,6 @@ services:
     networks:
       - laraveldockerize 
 
-  #Composer Service
-  composer:
-    image: composer:latest
-    container_name: lcp_composer
-    volumes: 
-      - .:/var/www/html
-    working_dir: /var/www/html
-    depends_on: 
-      - php
-    networks:
-      - laraveldockerize    
-
-  #NPM Service
-  npm:
-    image: node:14.9
-    container_name: lcp_npm
-    volumes: 
-      - .:/var/www/html
-    working_dir: /var/www/html
-    entrypoint: ['npm']
-
-  #Artisan Service
-  artisan:
-    build: 
-      context: .
-      dockerfile: ./dockerize/app/php.dockerfile
-    container_name: lcp_artisan
-    volumes: 
-      - .:/var/www/html
-    working_dir: /var/www/html
-    entrypoint: ['php', '/var/www/html/artisan']
-    networks:
-      - laraveldockerize
-
-
 #Docker Networks
 networks:
   laraveldockerize:
